@@ -4,9 +4,26 @@ const KEY = "restaurant-qr-app-state-v1";
 
 const now = () => new Date().toISOString();
 const id = (prefix: string) => `${prefix}_${Math.random().toString(36).slice(2, 9)}`;
+const youtubeSearch = (query: string) => `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
 
 const restaurantId = "restaurant_demo";
 const ownerId = "owner_demo";
+
+const demoVideoUrls: Record<string, string> = {
+  food_paneer: youtubeSearch("paneer tikka recipe"),
+  food_biryani: youtubeSearch("veg biryani recipe"),
+  food_curry: youtubeSearch("chicken curry recipe"),
+  food_masala_chai: youtubeSearch("masala chai recipe"),
+  food_filter_coffee: youtubeSearch("south indian filter coffee recipe"),
+  food_sweet_lassi: youtubeSearch("sweet lassi recipe"),
+  food_mango_lassi: youtubeSearch("mango lassi recipe"),
+  food_fresh_lime_soda: youtubeSearch("fresh lime soda recipe"),
+  food_jaljeera: youtubeSearch("jaljeera recipe"),
+  food_buttermilk: youtubeSearch("masala buttermilk chaas recipe"),
+  food_cold_coffee: youtubeSearch("cold coffee recipe"),
+  food_watermelon_juice: youtubeSearch("watermelon juice recipe"),
+  food_virgin_mojito: youtubeSearch("virgin mojito recipe"),
+};
 
 const demoDrinks: Food[] = [
   {
@@ -17,7 +34,7 @@ const demoDrinks: Food[] = [
     price: 35,
     description: "Hot tea brewed with milk, ginger, cardamom, and warming spices.",
     imageUrl: "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_masala_chai,
     preparationTime: 6,
     available: true,
     averageRating: 4.7,
@@ -32,7 +49,7 @@ const demoDrinks: Food[] = [
     price: 45,
     description: "South Indian style coffee with strong decoction and frothy milk.",
     imageUrl: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_filter_coffee,
     preparationTime: 7,
     available: true,
     averageRating: 4.8,
@@ -47,7 +64,7 @@ const demoDrinks: Food[] = [
     price: 80,
     description: "Creamy chilled yoghurt drink finished with cardamom and pistachio.",
     imageUrl: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_sweet_lassi,
     preparationTime: 8,
     available: true,
     averageRating: 4.6,
@@ -62,7 +79,7 @@ const demoDrinks: Food[] = [
     price: 95,
     description: "Thick mango and yoghurt cooler blended smooth and served chilled.",
     imageUrl: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_mango_lassi,
     preparationTime: 8,
     available: true,
     averageRating: 4.9,
@@ -77,7 +94,7 @@ const demoDrinks: Food[] = [
     price: 70,
     description: "Sparkling lime cooler served sweet, salted, or mixed.",
     imageUrl: "https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_fresh_lime_soda,
     preparationTime: 5,
     available: true,
     averageRating: 4.5,
@@ -92,7 +109,7 @@ const demoDrinks: Food[] = [
     price: 60,
     description: "Tangy cumin, mint, and lemon cooler with a punchy spice mix.",
     imageUrl: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_jaljeera,
     preparationTime: 5,
     available: true,
     averageRating: 4.4,
@@ -107,7 +124,7 @@ const demoDrinks: Food[] = [
     price: 55,
     description: "Cooling chaas with roasted cumin, coriander, curry leaves, and salt.",
     imageUrl: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_buttermilk,
     preparationTime: 5,
     available: true,
     averageRating: 4.5,
@@ -122,7 +139,7 @@ const demoDrinks: Food[] = [
     price: 110,
     description: "Iced coffee blended with milk, sugar, and a scoop of vanilla.",
     imageUrl: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_cold_coffee,
     preparationTime: 9,
     available: true,
     averageRating: 4.7,
@@ -137,7 +154,7 @@ const demoDrinks: Food[] = [
     price: 90,
     description: "Fresh watermelon juice with mint and a light squeeze of lime.",
     imageUrl: "https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_watermelon_juice,
     preparationTime: 7,
     available: true,
     averageRating: 4.6,
@@ -152,7 +169,7 @@ const demoDrinks: Food[] = [
     price: 120,
     description: "Mint, lime, sugar, and soda muddled into a bright alcohol-free cooler.",
     imageUrl: "https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=700&q=85",
-    videoUrl: "",
+    videoUrl: demoVideoUrls.food_virgin_mojito,
     preparationTime: 8,
     available: true,
     averageRating: 4.8,
@@ -206,7 +223,7 @@ const seed: AppState = {
       price: 220,
       description: "Soft paneer marinated with ginger, chilli, yoghurt, and charred peppers.",
       imageUrl: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=700&q=85",
-      videoUrl: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      videoUrl: demoVideoUrls.food_paneer,
       preparationTime: 15,
       available: true,
       averageRating: 4.8,
@@ -221,7 +238,7 @@ const seed: AppState = {
       price: 180,
       description: "Layered basmati rice with seasonal vegetables, saffron, and fried onions.",
       imageUrl: "https://images.unsplash.com/photo-1631515242808-497c3fbd3972?auto=format&fit=crop&w=700&q=85",
-      videoUrl: "",
+      videoUrl: demoVideoUrls.food_biryani,
       preparationTime: 20,
       available: true,
       averageRating: 4.6,
@@ -236,7 +253,7 @@ const seed: AppState = {
       price: 260,
       description: "Slow cooked chicken in a rich tomato-onion gravy with warm spices.",
       imageUrl: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=700&q=85",
-      videoUrl: "",
+      videoUrl: demoVideoUrls.food_curry,
       preparationTime: 22,
       available: true,
       averageRating: 4.7,
@@ -249,12 +266,16 @@ const seed: AppState = {
   ratings: [],
 };
 
-function withDemoDrinks(state: AppState): AppState {
+function withDemoMenuUpdates(state: AppState): AppState {
   if (!state.restaurants.some((restaurant) => restaurant.id === restaurantId)) return state;
   const existingIds = new Set(state.foods.map((food) => food.id));
   const missingDrinks = demoDrinks.filter((drink) => !existingIds.has(drink.id));
-  if (!missingDrinks.length) return state;
-  return { ...state, foods: [...state.foods, ...missingDrinks] };
+  const foods = [...state.foods, ...missingDrinks].map((food) => {
+    const videoUrl = demoVideoUrls[food.id];
+    if (!videoUrl) return food;
+    return { ...food, videoUrl };
+  });
+  return { ...state, foods };
 }
 
 export function loadState(): AppState {
@@ -263,7 +284,7 @@ export function loadState(): AppState {
     localStorage.setItem(KEY, JSON.stringify(seed));
     return seed;
   }
-  const state = withDemoDrinks(JSON.parse(raw) as AppState);
+  const state = withDemoMenuUpdates(JSON.parse(raw) as AppState);
   localStorage.setItem(KEY, JSON.stringify(state));
   return state;
 }
