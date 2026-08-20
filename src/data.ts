@@ -8,6 +8,159 @@ const id = (prefix: string) => `${prefix}_${Math.random().toString(36).slice(2, 
 const restaurantId = "restaurant_demo";
 const ownerId = "owner_demo";
 
+const demoDrinks: Food[] = [
+  {
+    id: "food_masala_chai",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Masala Chai",
+    price: 35,
+    description: "Hot tea brewed with milk, ginger, cardamom, and warming spices.",
+    imageUrl: "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 6,
+    available: true,
+    averageRating: 4.7,
+    totalRatings: 82,
+    createdAt: now(),
+  },
+  {
+    id: "food_filter_coffee",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Filter Coffee",
+    price: 45,
+    description: "South Indian style coffee with strong decoction and frothy milk.",
+    imageUrl: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 7,
+    available: true,
+    averageRating: 4.8,
+    totalRatings: 76,
+    createdAt: now(),
+  },
+  {
+    id: "food_sweet_lassi",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Sweet Lassi",
+    price: 80,
+    description: "Creamy chilled yoghurt drink finished with cardamom and pistachio.",
+    imageUrl: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 8,
+    available: true,
+    averageRating: 4.6,
+    totalRatings: 69,
+    createdAt: now(),
+  },
+  {
+    id: "food_mango_lassi",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Mango Lassi",
+    price: 95,
+    description: "Thick mango and yoghurt cooler blended smooth and served chilled.",
+    imageUrl: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 8,
+    available: true,
+    averageRating: 4.9,
+    totalRatings: 104,
+    createdAt: now(),
+  },
+  {
+    id: "food_fresh_lime_soda",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Fresh Lime Soda",
+    price: 70,
+    description: "Sparkling lime cooler served sweet, salted, or mixed.",
+    imageUrl: "https://images.unsplash.com/photo-1621263764928-df1444c5e859?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 5,
+    available: true,
+    averageRating: 4.5,
+    totalRatings: 58,
+    createdAt: now(),
+  },
+  {
+    id: "food_jaljeera",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Jaljeera",
+    price: 60,
+    description: "Tangy cumin, mint, and lemon cooler with a punchy spice mix.",
+    imageUrl: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 5,
+    available: true,
+    averageRating: 4.4,
+    totalRatings: 47,
+    createdAt: now(),
+  },
+  {
+    id: "food_buttermilk",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Masala Buttermilk",
+    price: 55,
+    description: "Cooling chaas with roasted cumin, coriander, curry leaves, and salt.",
+    imageUrl: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 5,
+    available: true,
+    averageRating: 4.5,
+    totalRatings: 63,
+    createdAt: now(),
+  },
+  {
+    id: "food_cold_coffee",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Cold Coffee",
+    price: 110,
+    description: "Iced coffee blended with milk, sugar, and a scoop of vanilla.",
+    imageUrl: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 9,
+    available: true,
+    averageRating: 4.7,
+    totalRatings: 91,
+    createdAt: now(),
+  },
+  {
+    id: "food_watermelon_juice",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Watermelon Juice",
+    price: 90,
+    description: "Fresh watermelon juice with mint and a light squeeze of lime.",
+    imageUrl: "https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 7,
+    available: true,
+    averageRating: 4.6,
+    totalRatings: 52,
+    createdAt: now(),
+  },
+  {
+    id: "food_virgin_mojito",
+    restaurantId,
+    categoryId: "cat_drinks",
+    name: "Virgin Mojito",
+    price: 120,
+    description: "Mint, lime, sugar, and soda muddled into a bright alcohol-free cooler.",
+    imageUrl: "https://images.unsplash.com/photo-1546171753-97d7676e4602?auto=format&fit=crop&w=700&q=85",
+    videoUrl: "",
+    preparationTime: 8,
+    available: true,
+    averageRating: 4.8,
+    totalRatings: 88,
+    createdAt: now(),
+  },
+];
+
 const seed: AppState = {
   currentOwnerId: ownerId,
   owners: [
@@ -90,10 +243,19 @@ const seed: AppState = {
       totalRatings: 71,
       createdAt: now(),
     },
+    ...demoDrinks,
   ],
   orders: [],
   ratings: [],
 };
+
+function withDemoDrinks(state: AppState): AppState {
+  if (!state.restaurants.some((restaurant) => restaurant.id === restaurantId)) return state;
+  const existingIds = new Set(state.foods.map((food) => food.id));
+  const missingDrinks = demoDrinks.filter((drink) => !existingIds.has(drink.id));
+  if (!missingDrinks.length) return state;
+  return { ...state, foods: [...state.foods, ...missingDrinks] };
+}
 
 export function loadState(): AppState {
   const raw = localStorage.getItem(KEY);
@@ -101,7 +263,9 @@ export function loadState(): AppState {
     localStorage.setItem(KEY, JSON.stringify(seed));
     return seed;
   }
-  return JSON.parse(raw) as AppState;
+  const state = withDemoDrinks(JSON.parse(raw) as AppState);
+  localStorage.setItem(KEY, JSON.stringify(state));
+  return state;
 }
 
 export function saveState(state: AppState) {
